@@ -1,0 +1,36 @@
+body{
+  text-align: center;
+}
+.board {
+  height: 500px;
+  width : 600px;
+  margin: auto;
+  margin-top: 0px;
+  background:blue;
+  border: 3px gray solid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.circle {
+  width: 13%;
+  height: 15%;
+  border: 1px black solid;
+  background: white;
+  border-radius: 70px;
+}
+
+h1 {
+  color: red;
+  font-family: arial;
+}
+
+#turn {
+  color: black;
+  font-size: 1.5em;
+  margin-top: 0px;
+}
+
+
+
