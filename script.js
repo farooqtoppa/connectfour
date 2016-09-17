@@ -71,7 +71,7 @@ $( document ).ready(function() {
   } // ends foreloop
 
   // create function for adding class
-  function addClass(circle) {
+  var addClass = function(circle) {
     if(check == false) {
       circle.addClass("yellow");
       yellowChipWin();
@@ -83,8 +83,7 @@ $( document ).ready(function() {
   }
 
   // deals with black chips
-  function yellowChipWin() {
-
+  var yellowChipWin = function() {
     var yellowChips = $(".yellow");
     for(var i = 0; i < winningCombinations.length; i++) {
       var winCounter = 0;
@@ -94,6 +93,8 @@ $( document ).ready(function() {
             winCounter++;
             if (winCounter == 4) {
               setTimeout(gameOver, 100);
+              // crowd cheer for winner
+              var $crowd = $("<audio autoplay><source src='crowd.mp3'/>");
             }
           }
         } // end for loop
@@ -101,8 +102,9 @@ $( document ).ready(function() {
     } // end outer loop
   } // end function
 
+
   // deals with red chips
-  function redChipWin() {
+  var redChipWin = function() {
     var redChips = $(".red");
     for(var i = 0; i < winningCombinations.length; i++) {
       var winCounter = 0;
@@ -110,9 +112,10 @@ $( document ).ready(function() {
         for(var k = 0; k < redChips.length; k++) {
           if(redChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
             winCounter++;
-            console.log('win counter: ', winCounter);
             if (winCounter == 4) {
               setTimeout(gameOver, 100);
+              // crowd cheer for winner :)
+              var $crowd = $("<audio autoplay><source src='crowd.mp3'/>");
             }
           }
         } // end for loop
@@ -121,14 +124,14 @@ $( document ).ready(function() {
   } // end function
 
     // restart game with button
-    function restartGame() {
+    var restartGame = function() {
       $('#button').click(function() {
         location.reload();
       });
     }
 
     // restart game without button will be called as soon as their is a winner
-    function gameOver() {
+    var gameOver = function() {
       alert('game over');
       location.reload();
     }
