@@ -1,9 +1,12 @@
 $( document ).ready(function() {
 
   // will be needed at end to check for winner
-  var winningCombinations = [[0,1,2,3],[3,4,5,6],[7,8,9,10],
-    [10,11,12,13],[14,15,16,17],[17,18,19,20],[21,22,23,24],[24,25,26,27],
-    [28,29,30,31],[31,32,33,34],[35,36,37,38],[38,39,40,41]];
+  var horizontalWins = [
+    [0,1,2,3],[1,2,3,4],[2,3,4,5],[3,4,5,6],[7,8,9,10],[8,9,10,11],[9,10,11,12],
+    [10,11,12,13],[14,15,16,17],[15,16,17,18],[16,17,18,19],[17,18,19,20],[21,22,23,24],
+    [22,23,24,25],[23,24,25,26],[24,25,26,27],[28,29,30,31],[29,30,31,32],[30,31,32,33],
+    [31,32,33,34],[35,36,37,38],[36,37,38,39],[37,38,39,40],[38,39,40,41]
+  ];
 
   // grab turn id and change players turn
   var $turn = $("#turn");
@@ -54,14 +57,10 @@ $( document ).ready(function() {
   // create function for adding class
   function addClass(circle) {
     if(check == false) {
-      circle.html("bc");
-      circle.css("color", "black");
       circle.addClass("black");
       blackChipWin();
     }
     else{
-      circle.css("color", "red");
-      circle.html("rc");
       circle.addClass("red");
       redChipWin();
     }
@@ -69,15 +68,17 @@ $( document ).ready(function() {
 
     function blackChipWin() {
       var blackChips = $(".black");
-      for(var i = 0; i < winningCombinations.length; i++) {
+      for(var i = 0; i < horizontalWins.length; i++) {
           var winCounter = 0;
-          for (var j = 0; j < winningCombinations[i].length; j++) {
+          for (var j = 0; j < horizontalWins[i].length; j++) {
             for(var k = 0; k < blackChips.length; k++) {
-              if(blackChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
+              if(blackChips.eq(k).attr("id") == "circle" + horizontalWins[i][j]) {
                 winCounter++;
                 console.log('win counter: ', winCounter);
                 if (winCounter == 4) {
                   alert('game over');
+                  // restart game after win
+                  gameRestart();
                 }
               }
             } // end for loop
@@ -89,13 +90,14 @@ $( document ).ready(function() {
       var redChips = $(".red");
     }
 
-    // reset board function
+    // reset by game button
     function restartGame() {
       $('#reload').click(function() {
         location.reload();
       });
     }
 
+    // reset after win automatically
     function gameRestart() {
       location.reload();
     }
