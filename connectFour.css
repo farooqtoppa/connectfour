@@ -1,11 +1,12 @@
 body{
   text-align: center;
+  font-family: arial;
 }
 .board {
   height: 500px;
   width : 600px;
   margin: auto;
-  margin-top: 0px;
+  margin-top: 10px;
   background:blue;
   border: 3px gray solid;
   display: flex;
@@ -21,16 +22,22 @@ body{
   border-radius: 70px;
 }
 
-h1 {
+#header {
   color: red;
-  font-family: arial;
+  margin-top: 45px;
 }
 
 #turn {
   color: black;
   font-size: 1.5em;
-  margin-top: 0px;
+  margin-top: -20px;
 }
+
+#button {
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
 
 
 

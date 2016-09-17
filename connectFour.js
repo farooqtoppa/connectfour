@@ -31,16 +31,20 @@ $( document ).ready(function() {
   // grab board
   var $board = $(".board");
 
+
   // create class for circles
   var $circles = $("<div class='circle'></div>");
 
   // create fore loop to append circles to board
   for(var i = 0; i <= 41; i++) {
     var $circles = $("<div id = circle" + i + " " + " div class = circle>");
-    $circles.html(i);
+
 
     // create on click for circle
     $circles.one("click", function(){
+
+      // chip sound effect on every click
+      var $audio = $("<audio autoplay><source src='chip.mp3'/>");
 
       // when check is true onClick will give black chip
       // and change turn to player two
@@ -89,7 +93,7 @@ $( document ).ready(function() {
           if(blackChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
             winCounter++;
             if (winCounter == 4) {
-              alert('game over');
+              alert("player one win's");
               // restart game after win
               gameRestart();
             }
@@ -110,7 +114,7 @@ $( document ).ready(function() {
             winCounter++;
             console.log('win counter: ', winCounter);
             if (winCounter == 4) {
-              alert('game over');
+              alert("player two win's");
               // restart game after win
               gameRestart();
             }
@@ -122,7 +126,7 @@ $( document ).ready(function() {
 
     // restart game with button
     function restartGame() {
-      $('#reload').click(function() {
+      $('#button').click(function() {
         location.reload();
       });
     }
