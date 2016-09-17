@@ -4,7 +4,6 @@ $( document ).ready(function() {
   var winningCombinations = [[0,1,2,3],[3,4,5,6],[7,8,9,10],
     [10,11,12,13],[14,15,16,17],[17,18,19,20],[21,22,23,24],[24,25,26,27],
     [28,29,30,31],[31,32,33,34],[35,36,37,38],[38,39,40,41]];
-  var winCounter = 0;
 
   // grab turn id and change players turn
   var $turn = $("#turn");
@@ -58,40 +57,36 @@ $( document ).ready(function() {
       circle.html("bc");
       circle.css("color", "black");
       circle.addClass("black");
-      blackChipWin(circle);
+      blackChipWin();
     }
     else{
       circle.css("color", "red");
       circle.html("rc");
       circle.addClass("red");
-      redChipWin(circle);
+      redChipWin();
     }
   }
 
-    function blackChipWin(circle) {
-        var blackChips = $(".black");
-
-        for(var i = 0; i < blackChips.length; i++) {
-            console.log("This is a black chip", blackChips.eq(i));
-            for (var j = 0; j < winningCombinations.length; j++) {
-              for(var k = 0; k < winningCombinations[j].length; k++) {
-              //console.log(winningCombinations[j][k]);
-              console.log($("#circle" + [j][k]));
-
-
-            }
-            if(winCounter === 4) {
-                //alert("Game over");
-                //gameRestart();
+    function blackChipWin() {
+      var blackChips = $(".black");
+      for(var i = 0; i < winningCombinations.length; i++) {
+          var winCounter = 0;
+          for (var j = 0; j < winningCombinations[i].length; j++) {
+            for(var k = 0; k < blackChips.length; k++) {
+              if(blackChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
+                winCounter++;
+                console.log('win counter: ', winCounter);
+                if (winCounter == 4) {
+                  alert('game over');
+                }
               }
-          }
-        }
-    }
+            } // end for loop
+          } // end inner for loop
+      } // end outer loop
+    } // end function
 
-    function redChipWin(circle) {
+    function redChipWin() {
       var redChips = $(".red");
-      console.log(redChips);
-
     }
 
     // reset board function
