@@ -46,7 +46,7 @@ $( document ).ready(function() {
       // chip sound effect on every click
       var $audio = $("<audio autoplay><source src='chip.mp3'/>");
 
-      // when check is true onClick will give black chip
+      // when check is true onClick will give yellow chip
       // and change turn to player two
       if(check == true) {
         $(this).css("background-color", "yellow");
@@ -59,7 +59,7 @@ $( document ).ready(function() {
       // and change turn to player one
       else {
         $(this).css("background-color", "red");
-        $turn.css("color", "black");
+        $turn.css("color", "yellow");
         check = true;
         $turn.text("Player one's turn");
       }
@@ -74,8 +74,8 @@ $( document ).ready(function() {
   // create function for adding class
   function addClass(circle) {
     if(check == false) {
-      circle.addClass("black");
-      blackChipWin();
+      circle.addClass("yellow");
+      yellowChipWin();
     }
     else{
       circle.addClass("red");
@@ -84,18 +84,17 @@ $( document ).ready(function() {
   }
 
   // deals with black chips
-  function blackChipWin() {
-    var blackChips = $(".black");
+  function yellowChipWin() {
+
+    var yellowChips = $(".yellow");
     for(var i = 0; i < winningCombinations.length; i++) {
       var winCounter = 0;
       for (var j = 0; j < winningCombinations[i].length; j++) {
-        for(var k = 0; k < blackChips.length; k++) {
-          if(blackChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
+        for(var k = 0; k < yellowChips.length; k++) {
+          if(yellowChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
             winCounter++;
             if (winCounter == 4) {
-              alert("player one win's");
-              // restart game after win
-              gameRestart();
+              setTimeout(gameOver, 100);
             }
           }
         } // end for loop
@@ -114,9 +113,7 @@ $( document ).ready(function() {
             winCounter++;
             console.log('win counter: ', winCounter);
             if (winCounter == 4) {
-              alert("player two win's");
-              // restart game after win
-              gameRestart();
+              setTimeout(gameOver, 100);
             }
           }
         } // end for loop
@@ -132,7 +129,8 @@ $( document ).ready(function() {
     }
 
     // restart game without button will be called as soon as their is a winner
-    function gameRestart() {
+    function gameOver() {
+      alert('game over');
       location.reload();
     }
     restartGame();
