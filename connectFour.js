@@ -49,7 +49,7 @@ $( document ).ready(function() {
       // when check is true onClick will give black chip
       // and change turn to player two
       if(check == true) {
-        $(this).css("background-color", "black");
+        $(this).css("background-color", "yellow");
         $turn.css("color", "red");
         check = false;
         $turn.text("Player two's turn");
