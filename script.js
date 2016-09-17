@@ -22,13 +22,13 @@ $( document ).ready(function() {
 
   ];
 
-  // grab turn id and change players turn
+  // grab turn id for player change
   var $turn = $("#turn");
 
   // boolean for color change
   var check = true;
 
-  // grab board
+  // access board
   var $board = $(".board");
 
 
@@ -38,7 +38,6 @@ $( document ).ready(function() {
   // create fore loop to append circles to board
   for(var i = 0; i <= 41; i++) {
     var $circles = $("<div id = circle" + i + " " + " div class = circle>");
-
 
     // create on click for circle
     $circles.one("click", function(){
