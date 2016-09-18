@@ -6,7 +6,7 @@
 . Javascript
 . JQuery
 
-Instructions 
+#Instructions 
 
 Player one = yellow chips
 player two = red chips
