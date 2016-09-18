@@ -31,7 +31,6 @@ $( document ).ready(function() {
   // access board
   var $board = $(".board");
 
-
   // create class for circles
   var $circles = $("<div class='circle'></div>");
 
@@ -80,7 +79,7 @@ $( document ).ready(function() {
       circle.addClass("red");
       redChipWin();
     }
-  }
+  } // ends function
 
   // checks for yellow chip winner
   var yellowChipWin = function() {
@@ -97,11 +96,10 @@ $( document ).ready(function() {
               var $crowd = $("<audio autoplay><source src='crowd.mp3'/>");
             }
           }
-        } // end for loop
-      } // end inner for loop
-    } // end outer loop
-  } // end function
-
+        } // ends for loop
+      } // ends inner for loop
+    } // ends outer loop
+  } // ends function
 
   // checks for red chip winner
   var redChipWin = function() {
