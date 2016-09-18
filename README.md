@@ -2,9 +2,9 @@
 
 #Technologies Used
 
-. HTML5/CSS3
-. Javascript
-. JQuery
+HTML5/CSS3
+Javascript
+JQuery
 
 #Instructions 
 
