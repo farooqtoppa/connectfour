@@ -82,7 +82,7 @@ $( document ).ready(function() {
     }
   }
 
-  // deals with black chips
+  // checks for yellow chip winner
   var yellowChipWin = function() {
     var yellowChips = $(".yellow");
     for(var i = 0; i < winningCombinations.length; i++) {
@@ -93,7 +93,7 @@ $( document ).ready(function() {
             winCounter++;
             if (winCounter == 4) {
               setTimeout(gameOver, 100);
-              // crowd cheer for winner
+              // crowd cheers for winner
               var $crowd = $("<audio autoplay><source src='crowd.mp3'/>");
             }
           }
@@ -103,7 +103,7 @@ $( document ).ready(function() {
   } // end function
 
 
-  // deals with red chips
+  // checks for red chip winner
   var redChipWin = function() {
     var redChips = $(".red");
     for(var i = 0; i < winningCombinations.length; i++) {
@@ -114,7 +114,7 @@ $( document ).ready(function() {
             winCounter++;
             if (winCounter == 4) {
               setTimeout(gameOver, 100);
-              // crowd cheer for winner :)
+              // crowd cheers for winner :)
               var $crowd = $("<audio autoplay><source src='crowd.mp3'/>");
             }
           }
@@ -137,6 +137,4 @@ $( document ).ready(function() {
     }
     restartGame();
 
-  }); // ends addClass()
-
- // ends document.ready function()
+  }); // ends document.ready function()
