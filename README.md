@@ -2,15 +2,15 @@
 
 #Technologies Used
 
-HTML5/CSS3
-Javascript
+HTML5/CSS3  </br>
+Javascript  </br>
 JQuery
 
 #Instructions 
 
-PlayerOne/yellow  </br>
-playerTwo/red
+Playerone = yellow chips  </br>
+playertwo = red chips
 
-The game starts with player one which is yellow and alternates between player 1 and player two until their is a winner. In order to win you must get four clicks in a row vertically, diagnolly, or horizontally. The game will end and restart automatically allowing users to play as many times as they would like. Also the user can click the restart button located on top to restart the game at any time.
+The game starts allowing player one to go first. Turns will alternate between both players on every click. In order to win player must get four clicks in a row vertically, diagnolly, or horizontally. The game will then end and restart automatically allowing users to play as many times as they would like. Also users can restart game at anytime by clicking the restart button.
 
 
