@@ -1,4 +1,4 @@
-# connectfour
+# My Connect Four Game
 
 #Technologies Used
 
