@@ -3,4 +3,4 @@
 
 Instructions 
 
-This game requries 
+
