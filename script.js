@@ -14,7 +14,7 @@ $( document ).ready(function() {
     [4,11,18,25],[11,18,25,32],[18,25,32,39],[5,12,19,26],[12,19,26,33],[19,26,33,40],
     [6,13,20,27],[13,20,27,34],[20,27,34,41],
 
-    // diagnol wins
+    // diagonol wins
     [14,22,30,38],[7,15,23,31],[15,23,31,39],[0,8,16,24],[8,16,24,32],[16,24,32,40],
     [1,9,17,25],[9,17,25,33],[17,25,33,41],[2,10,18,26],[10,18,26,34],[3,11,19,27],
     [20,26,32,38],[13,19,25,31],[19,25,31,37],[6,12,18,24],[12,18,24,30],[18,24,30,36],
@@ -22,13 +22,13 @@ $( document ).ready(function() {
 
   ];
 
-  // grab turn id for player change
+  // player turn
   var $turn = $("#turn");
 
-  // boolean for color change
+  // boolean
   var check = true;
 
-  // access board
+  // game board
   var $board = $(".board");
 
   // create class for circles
@@ -38,29 +38,31 @@ $( document ).ready(function() {
   for(var i = 0; i <= 41; i++) {
     var $circles = $("<div id = circle" + i + " " + " div class = circle>");
 
-    // create on click for circle
+    // create on click for circle (user can only click once)
     $circles.one("click", function(){
 
       // chip sound effect on every click
       var $audio = $("<audio autoplay><source src='chip.mp3'/>");
 
-      // when check is true onClick will give yellow chip
-      // and change turn to player two
+      // turn check to false for player 1 and give a yellow chip
       if(check == true) {
         $(this).css("background-color", "yellow");
         $turn.css("color", "red");
         check = false;
+        // change turn to player two
         $turn.text("Player two's turn");
       }
 
-      // when check is false onClick will give red chip
-      // and change turn to player one
+      // turn check to true for player 2 and give a red chip
       else {
         $(this).css("background-color", "red");
         $turn.css("color", "yellow");
         check = true;
+        // change turn to player one
         $turn.text("Player one's turn");
       }
+
+      // pass circle to addClass function
       addClass($(this));
 
     }); // ends onOneClick()
@@ -69,7 +71,7 @@ $( document ).ready(function() {
     $circles.appendTo($board);
   } // ends foreloop
 
-  // create function for adding class
+  // create function for adding classes
   var addClass = function(circle) {
     if(check == false) {
       circle.addClass("yellow");
@@ -84,10 +86,15 @@ $( document ).ready(function() {
   // checks for yellow chip winner
   var yellowChipWin = function() {
     var yellowChips = $(".yellow");
+    // loops through winning combos
     for(var i = 0; i < winningCombinations.length; i++) {
       var winCounter = 0;
+      // loops through index pos within winning combos
       for (var j = 0; j < winningCombinations[i].length; j++) {
+        // loops through all yellow chips
         for(var k = 0; k < yellowChips.length; k++) {
+          // when the id of the circle macthes the index pos
+          // we know its been clicked
           if(yellowChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
             winCounter++;
             if (winCounter == 4) {
@@ -104,15 +111,20 @@ $( document ).ready(function() {
   // checks for red chip winner
   var redChipWin = function() {
     var redChips = $(".red");
+    // loops through winning combos
     for(var i = 0; i < winningCombinations.length; i++) {
       var winCounter = 0;
+      // loops through index pos within winning combos
       for (var j = 0; j < winningCombinations[i].length; j++) {
+        // loops through all red chips
         for(var k = 0; k < redChips.length; k++) {
+          // when the id of the circle macthes the index pos
+          // we know its been clicked
           if(redChips.eq(k).attr("id") == "circle" + winningCombinations[i][j]) {
             winCounter++;
             if (winCounter == 4) {
               setTimeout(gameOver, 100);
-              // crowd cheers for winner :)
+              // crowd cheers for winner
               var $crowd = $("<audio autoplay><source src='crowd.mp3'/>");
             }
           }
@@ -121,18 +133,25 @@ $( document ).ready(function() {
     } // end outter loop
   } // end function
 
-    // restart game with button
+    // game over function
+    // will give automatic rematch
+    var gameOver = function() {
+     if(check == false) {
+      alert('player one wins');
+     }
+     else{
+      alert('player two wins');
+     }
+      location.reload();
+    }
+
+     // restart game with button
     var restartGame = function() {
       $('#button').click(function() {
         location.reload();
       });
     }
 
-    // restart game without button will be called as soon as their is a winner
-    var gameOver = function() {
-      alert('game over');
-      location.reload();
-    }
     restartGame();
 
   }); // ends document.ready function()
